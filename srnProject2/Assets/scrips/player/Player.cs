@@ -11,13 +11,20 @@ public class Player : MonoBehaviour
 
     private Vector2 movementInput;
 
+    private Animator[] animators;
+
+    private bool isMoving;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animators = GetComponentsInChildren<Animator>();
+
     }
     private void Update()
     {
         PlayerInput();
+        SwichAnimation();
     }
     private void FixedUpdate()
     {
@@ -27,12 +34,32 @@ public class Player : MonoBehaviour
     {
         inputX = Input.GetAxisRaw("Horizontal");
         inputY = Input.GetAxisRaw("Vertical");
+        if(inputX!=0&&inputY!=0)
+        {
+            inputX = inputX * 0.6f;
+            inputY = inputY * 0.6f;
+        }
         movementInput = new Vector2(inputX, inputY);
+        isMoving = movementInput != Vector2.zero;
+
 
     }
     private void Movement()
     {
         rb.MovePosition(rb.position + movementInput * speed * Time.deltaTime);
 
+    }
+
+    private void SwichAnimation()
+    {
+        foreach (var anim in animators)
+        {
+            anim.SetBool("isMoving", isMoving);
+            if(isMoving)
+            {
+                anim.SetFloat("InputX", inputX);
+                anim.SetFloat("InputY", inputY);
+            }
+        }
     }
 }
