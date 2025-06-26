@@ -4,4 +4,12 @@ public enum ItemType
     HoeTool, ChopTool, BreakTool, ReapTool, WaterTool, CollectTool,///锄头，砍树，砸石头，割草，浇水，收割
     ReapableScenery///杂草
 }
+public enum SlotType
+{
+    Bag, Box, Shop
+}
 
+public enum InventoryLocation
+{
+    Player,Box
+}
