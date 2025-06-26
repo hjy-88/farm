@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Settings : MonoBehaviour
+public class Settings
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public const float secondThreshold = 0.1f;
+    public const int secondHold = 59;
+    public const int minuteHold = 59;
+    public const int hourHold = 23;
+    public const int dayHold = 10;
+    public const int seasonHold = 3;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
