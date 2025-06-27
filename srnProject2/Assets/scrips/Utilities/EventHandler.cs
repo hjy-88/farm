@@ -16,5 +16,9 @@ public static class EventHandler
     {
         InstantiateItemInScene?.Invoke(ID, pos);
     }
-
+    public static event Action<int, int, int, int, int,int,Season> GameTimeEvent;
+    public static void CallGameTimeEvent(int second, int minute, int hour, int day, int month, int year, Season season)
+    {
+        GameTimeEvent?.Invoke(second, minute, hour, day, month, year, season);
+    }
 }
