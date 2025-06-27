@@ -8,6 +8,7 @@ namespace Mfarm.Inventory
 {
     public class InventoryUI : MonoBehaviour
     {
+        public ItemTooltip itemTooltip;
         [Header("ÍÏ×§Í¼Æ¬")]
         public Image dragItem;
 

@@ -117,16 +117,16 @@ namespace Mfarm.Inventory
                 }
             }
 
-            else 
-            {
-                if (itemDetails.canDropped)
-                {
-                    //鼠标对应世界地图坐标
-                    var pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
+            //else 
+            //{
+            //    if (itemDetails.canDropped)
+            //    {
+            //        //鼠标对应世界地图坐标
+            //        var pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
 
-                    EventHandler.CallInstantiateItemInScene(itemDetails.itemID, pos);
-                }
-            }
+            //        EventHandler.CallInstantiateItemInScene(itemDetails.itemID, pos);
+            //    }
+            //}
 
         }
     }
