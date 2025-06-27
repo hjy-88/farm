@@ -74,7 +74,7 @@ namespace Mfarm.Inventory
             if (slotType == SlotType.Bag)
             {
                 //通知物品被选中的状态和信息
-               // EventHandler.CallItemSelectedEvent(itemDetails, isSelected);
+                EventHandler.CallItemSelectedEvent(itemDetails, isSelected);
 
             }
         }
