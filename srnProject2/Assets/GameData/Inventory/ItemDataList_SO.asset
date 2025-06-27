@@ -26,7 +26,7 @@ MonoBehaviour:
     itemPrice: 0
     sellPercentage: 0
   - itemID: 1002
-    itemName: "\u82F9\u679C\u79CD\u5B50"
+    itemName: "\u8304\u5B50\u79CD\u5B50"
     itemType: 0
     itemIcon: {fileID: 1386034089, guid: 95ed2c725fbec92439db73cf9aefff5f, type: 3}
     itemOnWorldSprite: {fileID: 1386034089, guid: 95ed2c725fbec92439db73cf9aefff5f, type: 3}
