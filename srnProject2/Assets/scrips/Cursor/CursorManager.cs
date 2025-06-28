@@ -81,7 +81,7 @@ public class CursorManager : MonoBehaviour
     private void CheckCursorValid()
     {
         mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        mouseGridPos = currentGrid.WorldToCell(mouseWorldPos);
+       // mouseGridPos = currentGrid.WorldToCell(mouseWorldPos);
 
         Debug.Log("WorldPos:" + mouseWorldPos + " GridPos:" + mouseGridPos);
     }
