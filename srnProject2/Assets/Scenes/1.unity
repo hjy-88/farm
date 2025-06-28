@@ -154,6 +154,7 @@ MonoBehaviour:
   normal: {fileID: 21300000, guid: 207310167b7c2264092737aa7cb95b7d, type: 3}
   tool: {fileID: 21300000, guid: a95721ab715ea4a41b501496097983a7, type: 3}
   seed: {fileID: 21300000, guid: 56ba278cc75092447a423f7a7d675391, type: 3}
+  item: {fileID: 0}
 --- !u!4 &339899369
 Transform:
   m_ObjectHideFlags: 0
