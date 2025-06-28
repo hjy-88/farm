@@ -10,13 +10,21 @@ public class CursorManager : MonoBehaviour
     private Sprite currentSprite;
     private Image cursorImage;
     private RectTransform cursorCanvas;
+
+    private Camera mainCamera;
+    private Grid currentGrid;
+
+    private Vector3 mouseWorldPos;
+    private Vector3Int mouseGridPos;
     private void OnEnable()
     {
         EventHandler.ItemSelectedEvent += OnItemSelectedEvent;
+        //EventHandle.AfterSceneLoadedEvent += onAfterSceneLoadedEvent;
     }
     private void OnDisable()
     {
         EventHandler.ItemSelectedEvent -= OnItemSelectedEvent;
+        //EventHandle.AfterSceneLoadedEvent -= onAfterSceneLoadedEvent;
     }
     private void Start()
     {
@@ -24,15 +32,24 @@ public class CursorManager : MonoBehaviour
         cursorImage = cursorCanvas.GetChild(0).GetComponent<Image>();
         currentSprite = normal;
         SetCursorImage(normal);
+
+        //mainCamera = Camera.main;
     }
     private void Update()
     {
         if (cursorCanvas == null) return;
         cursorImage.transform.position = Input.mousePosition;
         if (!InteractWithUI())
+        {
             SetCursorImage(currentSprite);
+            //CheckCursorValid();
+        }
         else
             SetCursorImage(normal);
+    }
+    private void onAfterSceneLoadedEvent()
+    {
+        currentGrid = FindObjectOfType<Grid>();
     }
     private void SetCursorImage(Sprite sprite)
     {
@@ -60,6 +77,13 @@ public class CursorManager : MonoBehaviour
             };
         }
         
+    }
+    private void CheckCursorValid()
+    {
+        mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mouseGridPos = currentGrid.WorldToCell(mouseWorldPos);
+
+        Debug.Log("WorldPos:" + mouseWorldPos + " GridPos:" + mouseGridPos);
     }
     private bool InteractWithUI()
     {
