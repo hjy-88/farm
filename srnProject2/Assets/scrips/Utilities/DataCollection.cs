@@ -35,3 +35,11 @@ public class AnimatorType
     public PartName partName;
     public AnimatorOverrideController overrideController;
 }
+
+[System.Serializable]
+public class Tileproperty
+{
+    public Vector2Int tileCoordinate;
+    public GridType gridType;
+    public bool boolTypeValue;
+}
