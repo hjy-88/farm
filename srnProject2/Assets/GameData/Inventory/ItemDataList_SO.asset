@@ -38,7 +38,7 @@ MonoBehaviour:
     itemPrice: 20
     sellPercentage: 0.5
   - itemID: 1003
-    itemName: "\u4F5C\u7269"
+    itemName: "\u8304\u5B50"
     itemType: 1
     itemIcon: {fileID: 1131204531, guid: 95ed2c725fbec92439db73cf9aefff5f, type: 3}
     itemOnWorldSprite: {fileID: 1131204531, guid: 95ed2c725fbec92439db73cf9aefff5f, type: 3}
@@ -50,14 +50,38 @@ MonoBehaviour:
     itemPrice: 20
     sellPercentage: 0.5
   - itemID: 1004
-    itemName: "\u9E21\u86CB"
+    itemName: "\u8611\u83C7"
     itemType: 1
-    itemIcon: {fileID: 21300000, guid: ad0bf66c0b8badd4b8c3b28c1d972934, type: 3}
-    itemOnWorldSprite: {fileID: 21300000, guid: ad0bf66c0b8badd4b8c3b28c1d972934, type: 3}
-    itemDescription: "\u8FD9\u662F\u4E00\u79CD\u53EF\u4EE5\u5728\u5546\u5E97\u4E2D\u4EA4\u6613\u7684\u7269\u54C1"
-    itemUseRadius: 0
+    itemIcon: {fileID: 784756541, guid: 47d222cf2f6b3bb46afd970fe7638645, type: 3}
+    itemOnWorldSprite: {fileID: 784756541, guid: 47d222cf2f6b3bb46afd970fe7638645, type: 3}
+    itemDescription: "\u7F8E\u5473\u7684\u8611\u83C7\uFF0C\u4E00\u5B9A\u8981\u716E\u719F\u4E86\u518D\u5403\u554A\uFF01"
+    itemUseRadius: 1
     canPickedup: 1
-    canDropped: 0
+    canDropped: 1
     canCarried: 1
     itemPrice: 20
     sellPercentage: 0.5
+  - itemID: 1005
+    itemName: "\u6C34\u58F6"
+    itemType: 7
+    itemIcon: {fileID: 725226521, guid: 52f30bcd923bee54baa44b9994e72a7a, type: 3}
+    itemOnWorldSprite: {fileID: 725226521, guid: 52f30bcd923bee54baa44b9994e72a7a, type: 3}
+    itemDescription: "\u751F\u547D\u4E4B\u6E90\u7684\u5BB9\u5668\uFF0C\u6D47\u6C34\u8BA9\u4F5C\u7269\u957F\u9AD8\u9AD8\uFF0C\u7ED3\u51FA\u751C\u751C\u7684\u679C\u5B9E"
+    itemUseRadius: 1
+    canPickedup: 1
+    canDropped: 1
+    canCarried: 0
+    itemPrice: 0
+    sellPercentage: 0
+  - itemID: 1006
+    itemName: "\u65A7\u5934"
+    itemType: 4
+    itemIcon: {fileID: -2099071294, guid: 52f30bcd923bee54baa44b9994e72a7a, type: 3}
+    itemOnWorldSprite: {fileID: -2099071294, guid: 52f30bcd923bee54baa44b9994e72a7a, type: 3}
+    itemDescription: "\u6709\u4E9B\u6C89\u91CD\u7684\u5DE5\u5177\uFF0C\u4F46\u5B83\u662F\u780D\u6811\u7684\u597D\u5E2E\u624B\u3002\u563F\u54BB\u563F\u54BB~"
+    itemUseRadius: 1
+    canPickedup: 1
+    canDropped: 1
+    canCarried: 0
+    itemPrice: 0
+    sellPercentage: 0

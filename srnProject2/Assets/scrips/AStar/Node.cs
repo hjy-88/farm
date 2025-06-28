@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//创建Node类，表示地图中每个格子的三类数据，并且给出比较数据大小的逻辑
 namespace MFarm.AStar
 {
     public class Node : IComparable<Node>

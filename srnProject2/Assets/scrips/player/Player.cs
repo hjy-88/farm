@@ -15,15 +15,51 @@ public class Player : MonoBehaviour
 
     private bool isMoving;
 
+    private bool inputDisable;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animators = GetComponentsInChildren<Animator>();
 
     }
+
+    private void OnEnable()
+    {
+        EventHandler.BeforeSceneUnloadEvent += OnBeforeSceneUnloadEvent;
+        EventHandler.AfterSceneLoadedEvent += OnAfterSceneLoadedEvent;
+        EventHandler.MoveToPosition += OnMoveToPosition;
+    }
+
+    private void OnDisable()
+    {
+        EventHandler.BeforeSceneUnloadEvent -= OnBeforeSceneUnloadEvent;
+        EventHandler.AfterSceneLoadedEvent -= OnAfterSceneLoadedEvent;
+        EventHandler.MoveToPosition -= OnMoveToPosition;
+    }
+
+    private void OnMoveToPosition(Vector3 targetPosition)
+    {
+        transform.position = targetPosition;
+    }
+
+    private void OnAfterSceneLoadedEvent()
+    {
+        inputDisable = false;
+    }
+
+    private void OnBeforeSceneUnloadEvent()
+    {
+        inputDisable = true;
+    }
+
+
     private void Update()
     {
-        PlayerInput();
+        if (inputDisable == false)
+        {
+            PlayerInput();
+        }
         SwichAnimation();
     }
     private void FixedUpdate()

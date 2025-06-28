@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//初始化网络节点系统，能够根据坐标获得相应的节点数据
 namespace MFarm.AStar
 {
     public class GridNodes
