@@ -19,12 +19,12 @@ public class CursorManager : MonoBehaviour
     private void OnEnable()
     {
         EventHandler.ItemSelectedEvent += OnItemSelectedEvent;
-        //EventHandle.AfterSceneLoadedEvent += onAfterSceneLoadedEvent;
+        EventHandler.AfterSceneLoadedEvent += onAfterSceneLoadedEvent;
     }
     private void OnDisable()
     {
         EventHandler.ItemSelectedEvent -= OnItemSelectedEvent;
-        //EventHandle.AfterSceneLoadedEvent -= onAfterSceneLoadedEvent;
+        EventHandler.AfterSceneLoadedEvent -= onAfterSceneLoadedEvent;
     }
     private void Start()
     {
@@ -33,7 +33,7 @@ public class CursorManager : MonoBehaviour
         currentSprite = normal;
         SetCursorImage(normal);
 
-        //mainCamera = Camera.main;
+        mainCamera = Camera.main;
     }
     private void Update()
     {
@@ -42,7 +42,7 @@ public class CursorManager : MonoBehaviour
         if (!InteractWithUI())
         {
             SetCursorImage(currentSprite);
-            //CheckCursorValid();
+            CheckCursorValid();
         }
         else
             SetCursorImage(normal);
