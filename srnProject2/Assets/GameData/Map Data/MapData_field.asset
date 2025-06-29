@@ -863,15 +863,6 @@ MonoBehaviour:
   - tileCoordinate: {x: -12, y: -8}
     gridType: 1
     boolTypeValue: 1
-  - tileCoordinate: {x: -12, y: -6}
-    gridType: 1
-    boolTypeValue: 1
-  - tileCoordinate: {x: -12, y: -5}
-    gridType: 1
-    boolTypeValue: 1
-  - tileCoordinate: {x: -12, y: -4}
-    gridType: 1
-    boolTypeValue: 1
   - tileCoordinate: {x: -12, y: -2}
     gridType: 1
     boolTypeValue: 1
@@ -906,15 +897,6 @@ MonoBehaviour:
     gridType: 1
     boolTypeValue: 1
   - tileCoordinate: {x: -11, y: -8}
-    gridType: 1
-    boolTypeValue: 1
-  - tileCoordinate: {x: -11, y: -6}
-    gridType: 1
-    boolTypeValue: 1
-  - tileCoordinate: {x: -11, y: -5}
-    gridType: 1
-    boolTypeValue: 1
-  - tileCoordinate: {x: -11, y: -4}
     gridType: 1
     boolTypeValue: 1
   - tileCoordinate: {x: -11, y: -2}
@@ -953,15 +935,6 @@ MonoBehaviour:
   - tileCoordinate: {x: -10, y: -8}
     gridType: 1
     boolTypeValue: 1
-  - tileCoordinate: {x: -10, y: -6}
-    gridType: 1
-    boolTypeValue: 1
-  - tileCoordinate: {x: -10, y: -5}
-    gridType: 1
-    boolTypeValue: 1
-  - tileCoordinate: {x: -10, y: -4}
-    gridType: 1
-    boolTypeValue: 1
   - tileCoordinate: {x: -10, y: -2}
     gridType: 1
     boolTypeValue: 1
@@ -995,15 +968,6 @@ MonoBehaviour:
   - tileCoordinate: {x: -9, y: -8}
     gridType: 1
     boolTypeValue: 1
-  - tileCoordinate: {x: -9, y: -6}
-    gridType: 1
-    boolTypeValue: 1
-  - tileCoordinate: {x: -9, y: -5}
-    gridType: 1
-    boolTypeValue: 1
-  - tileCoordinate: {x: -9, y: -4}
-    gridType: 1
-    boolTypeValue: 1
   - tileCoordinate: {x: -9, y: -2}
     gridType: 1
     boolTypeValue: 1
@@ -1029,15 +993,6 @@ MonoBehaviour:
     gridType: 1
     boolTypeValue: 1
   - tileCoordinate: {x: -8, y: -8}
-    gridType: 1
-    boolTypeValue: 1
-  - tileCoordinate: {x: -8, y: -6}
-    gridType: 1
-    boolTypeValue: 1
-  - tileCoordinate: {x: -8, y: -5}
-    gridType: 1
-    boolTypeValue: 1
-  - tileCoordinate: {x: -8, y: -4}
     gridType: 1
     boolTypeValue: 1
   - tileCoordinate: {x: -8, y: -2}
