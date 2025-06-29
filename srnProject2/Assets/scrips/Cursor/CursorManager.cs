@@ -16,16 +16,20 @@ public class CursorManager : MonoBehaviour
 
     private Vector3 mouseWorldPos;
     private Vector3Int mouseGridPos;
+    private bool cursorEnable;
     private void OnEnable()
     {
         EventHandler.ItemSelectedEvent += OnItemSelectedEvent;
+        EventHandler.BeforeSceneUnloadEvent += OnBeforeSceneUnloadEvent;
         EventHandler.AfterSceneLoadedEvent += onAfterSceneLoadedEvent;
     }
     private void OnDisable()
     {
         EventHandler.ItemSelectedEvent -= OnItemSelectedEvent;
+        EventHandler.BeforeSceneUnloadEvent -= OnBeforeSceneUnloadEvent;
         EventHandler.AfterSceneLoadedEvent -= onAfterSceneLoadedEvent;
     }
+    
     private void Start()
     {
         cursorCanvas = GameObject.FindGameObjectWithTag("CursorCanvas").GetComponent<RectTransform>();
@@ -39,7 +43,7 @@ public class CursorManager : MonoBehaviour
     {
         if (cursorCanvas == null) return;
         cursorImage.transform.position = Input.mousePosition;
-        if (!InteractWithUI())
+        if (!InteractWithUI()&&cursorEnable)
         {
             SetCursorImage(currentSprite);
             CheckCursorValid();
@@ -50,6 +54,16 @@ public class CursorManager : MonoBehaviour
     private void onAfterSceneLoadedEvent()
     {
         currentGrid = FindObjectOfType<Grid>();
+        cursorEnable = true;
+        /*if (currentGrid == null)
+        {
+            Debug.LogError("找不到Grid组件！请确保场景中有Grid组件");
+            
+        }*/
+    }
+    private void OnBeforeSceneUnloadEvent()
+    {
+        cursorEnable = false;
     }
     private void SetCursorImage(Sprite sprite)
     {
@@ -80,8 +94,8 @@ public class CursorManager : MonoBehaviour
     }
     private void CheckCursorValid()
     {
-        mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-       // mouseGridPos = currentGrid.WorldToCell(mouseWorldPos);
+        mouseWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,-mainCamera.transform.position.z));
+        mouseGridPos = currentGrid.WorldToCell(mouseWorldPos);
 
         Debug.Log("WorldPos:" + mouseWorldPos + " GridPos:" + mouseGridPos);
     }
