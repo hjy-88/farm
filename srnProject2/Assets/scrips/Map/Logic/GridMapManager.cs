@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 namespace MFarm.Map
 {
     public class GridMapManager : Singleton<GridMapManager>
     {
+        [Header("种地瓦片切换信息")]
+        public RuleTile digTile;
+        public RuleTile waterTile;
+        private Tilemap digTilemap;
+        private Tilemap waterTilemap;
+
         public List<MapData_SO> mapDataList;
         private Dictionary<string, TileDetails> tileDetailsDict = new Dictionary<string, TileDetails>();
         private Grid currentGrid;
@@ -77,6 +84,27 @@ namespace MFarm.Map
         private void OnAfterSceneLoadedEvent()
         {
             currentGrid = FindObjectOfType<Grid>();
+            digTilemap = GameObject.FindWithTag("Dig").GetComponent<Tilemap>();
+            waterTilemap = GameObject.FindWithTag("Water").GetComponent<Tilemap>();
+            var digObj = GameObject.FindWithTag("Dig");
+            if (digObj != null)
+            {
+                digTilemap = digObj.GetComponent<Tilemap>();
+            }
+            else
+            {
+                Debug.LogError("找不到带 'Dig' 标签的 GameObject！请检查场景。");
+            }
+
+            var waterObj = GameObject.FindWithTag("Water");
+            if (waterObj != null)
+            {
+                waterTilemap = waterObj.GetComponent<Tilemap>();
+            }
+            else
+            {
+                Debug.LogError("找不到带 'Water' 标签的 GameObject！请检查场景。");
+            }
         }
         private void OnExecuteActionAfterAnimation(Vector3 mouseWorldPos,ItemDetails itemDetails)
         {
@@ -91,8 +119,43 @@ namespace MFarm.Map
                     case ItemType.Commodity:
                         EventHandler.CallDropItemEvent(itemDetails.itemID, mouseWorldPos);
                         break;
+                    case ItemType.HoeTool:
+                        SetDigGround(currentTile);
+                        currentTile.daySinceDug = 0;
+                        currentTile.canDig = false;
+                        currentTile.canDropItem = false;
+                        // 音效
+                        break;
+                    case ItemType.WaterTool:
+                        SetWaterGround(currentTile);
+                        currentTile.daysSinceWatered = 0;
+                        // 音效
+                        break;
                 }
             }
+        }
+
+        /// <summary>
+        /// 显示挖坑瓦片
+        /// </summary>
+        /// <param name="tile"></param>
+        private void SetDigGround(TileDetails tile)
+        {
+            Vector3Int pos = new Vector3Int(tile.gridX, tile.gridY, 0);
+            if (digTilemap != null)
+                digTilemap.SetTile(pos, digTile);
+        }
+
+        /// <summary>
+        /// 显示浇水瓦片
+        /// </summary>
+        /// <param name="tile"></param>
+        private void SetWaterGround(TileDetails tile)
+        {
+            Debug.Log($"11");
+            Vector3Int pos = new Vector3Int(tile.gridX, tile.gridY, 0);
+            if (waterTilemap != null)
+                waterTilemap.SetTile(pos, waterTile);
         }
     }
 }

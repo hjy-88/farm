@@ -6,6 +6,8 @@ TagManager:
   tags:
   - ItemParent
   - CursorCanvas
+  - Water
+  - Dig
   layers:
   - Default
   - TransparentFX
@@ -43,7 +45,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Water
+  - name: Ocean
     uniqueID: 3027087699
     locked: 0
   - name: GroundBottom
@@ -57,6 +59,12 @@ TagManager:
     locked: 0
   - name: Buildings
     uniqueID: 3244219649
+    locked: 0
+  - name: Dig
+    uniqueID: 52738521
+    locked: 0
+  - name: Water
+    uniqueID: 2802999955
     locked: 0
   - name: Front1
     uniqueID: 1453739135
