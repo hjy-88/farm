@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MFarm.Map
 {
-    public class GridMapManager : MonoBehaviour
+    public class GridMapManager : Singleton<GridMapManager>
     {
         public List<MapData_SO> mapDataList;
         private Dictionary<string, TileDetails> tileDetailsDict = new Dictionary<string, TileDetails>();
@@ -24,7 +25,7 @@ namespace MFarm.Map
                     gridX = tileProperty.tileCoordinate.x,
                     gridY = tileProperty.tileCoordinate.y
                 };
-                string key = tileDetails.gridX + "x" + tileDetails.gridY + mapData.sceneName;
+                string key = tileDetails.gridX + "x" + tileDetails.gridY + "y" + mapData.sceneName;
 
                 if(GetTileDetails(key)!=null)
                 {
@@ -54,6 +55,13 @@ namespace MFarm.Map
             if (tileDetailsDict.ContainsKey(key))
                 return tileDetailsDict[key];
             return null;
+        }
+        public TileDetails GetTileDetailsOnMousePosition(Vector3Int mouseGridPos)
+        {
+            string key = mouseGridPos.x + "x" + mouseGridPos.y + "y" + SceneManager.GetActiveScene().name;
+            //Debug.Log($"²éÑ¯ÍßÆ¬¼ü: {key}");
+            //Debug.Log($"×Öµä°üº¬¸Ã¼ü: {tileDetailsDict.ContainsKey(key)}");
+            return GetTileDetails(key);
         }
     }
 }
