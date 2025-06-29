@@ -26,12 +26,14 @@ public class CursorManager : MonoBehaviour
         EventHandler.ItemSelectedEvent += OnItemSelectedEvent;
         EventHandler.BeforeSceneUnloadEvent += OnBeforeSceneUnloadEvent;
         EventHandler.AfterSceneLoadedEvent += onAfterSceneLoadedEvent;
+        
     }
     private void OnDisable()
     {
         EventHandler.ItemSelectedEvent -= OnItemSelectedEvent;
         EventHandler.BeforeSceneUnloadEvent -= OnBeforeSceneUnloadEvent;
         EventHandler.AfterSceneLoadedEvent -= onAfterSceneLoadedEvent;
+        
     }
     
     private void Start()
@@ -51,9 +53,17 @@ public class CursorManager : MonoBehaviour
         {
             SetCursorImage(currentSprite);
             CheckCursorValid();
+            CheckPlayerInput();
         }
         else
             SetCursorImage(normal);
+    }
+    private void CheckPlayerInput()
+    {
+        if(Input.GetMouseButtonDown(0)&&cursorPositionValid)
+        {
+            EventHandler.CallMouseClickedEvent(mouseWorldPos, currentItem);
+        }
     }
     private void onAfterSceneLoadedEvent()
     {
@@ -65,6 +75,7 @@ public class CursorManager : MonoBehaviour
             
         }*/
     }
+    
     private void OnBeforeSceneUnloadEvent()
     {
         cursorEnable = false;
