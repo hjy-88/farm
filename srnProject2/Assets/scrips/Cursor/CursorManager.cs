@@ -127,7 +127,7 @@ public class CursorManager : MonoBehaviour
     }
     private void CheckCursorValid()
     {
-        mouseWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -mainCamera.transform.position.z));
+        mouseWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,-mainCamera.transform.position.z));
         mouseGridPos = currentGrid.WorldToCell(mouseWorldPos);
         //Debug.Log("WorldPos:" + mouseWorldPos + " GridPos:" + mouseGridPos);
 
@@ -144,10 +144,6 @@ public class CursorManager : MonoBehaviour
             {
                 case ItemType.Commodity:
                     if (currentTile.canDropItem&&currentTile.canDropItem) SetCursorValid(); else SetCursorInvalid();
-                    break;
-                case ItemType.HoeTool:
-                    if (currentTile.canDig) SetCursorValid();
-                    else SetCursorInvalid();
                     break;
             }
 
