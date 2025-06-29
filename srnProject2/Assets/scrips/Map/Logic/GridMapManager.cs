@@ -14,6 +14,7 @@ namespace MFarm.Map
         private Tilemap digTilemap;
         private Tilemap waterTilemap;
 
+        [Header("µÿÕº–≈œ¢")]
         public List<MapData_SO> mapDataList;
 
         private Dictionary<string, TileDetails> tileDetailsDict = new Dictionary<string, TileDetails>();
