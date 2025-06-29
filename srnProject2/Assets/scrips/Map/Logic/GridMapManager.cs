@@ -9,6 +9,17 @@ namespace MFarm.Map
     {
         public List<MapData_SO> mapDataList;
         private Dictionary<string, TileDetails> tileDetailsDict = new Dictionary<string, TileDetails>();
+        private Grid currentGrid;
+        private void OnEnable()
+        {
+            EventHandler.ExecuteActionAfterAnimation += OnExecuteActionAfterAnimation;
+            EventHandler.AfterSceneLoadedEvent += OnAfterSceneLoadedEvent;
+        }
+        private void OnDisable()
+        {
+            EventHandler.ExecuteActionAfterAnimation -= OnExecuteActionAfterAnimation;
+            EventHandler.AfterSceneLoadedEvent -= OnAfterSceneLoadedEvent;
+        }
         private void Start()
         {
             foreach(var mapData in mapDataList)
@@ -62,6 +73,25 @@ namespace MFarm.Map
             //Debug.Log($"²éÑ¯ÍßÆ¬¼ü: {key}");
             //Debug.Log($"×Öµä°üº¬¸Ã¼ü: {tileDetailsDict.ContainsKey(key)}");
             return GetTileDetails(key);
+        }
+        private void OnAfterSceneLoadedEvent()
+        {
+            currentGrid = FindObjectOfType<Grid>();
+        }
+        private void OnExecuteActionAfterAnimation(Vector3 mouseWorldPos,ItemDetails itemDetails)
+        {
+            var mouseGridPos = currentGrid.WorldToCell(mouseWorldPos);
+            var currentTile = GetTileDetailsOnMousePosition(mouseGridPos);
+
+            if(currentTile!=null)
+            {
+                switch(itemDetails.itemType)
+                {
+                    case ItemType.Commodity:
+                        EventHandler.CallInstantiateItemInScene(itemDetails.itemID, mouseWorldPos);
+                        break;
+                }
+            }
         }
     }
 }
