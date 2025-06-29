@@ -43,7 +43,7 @@ MonoBehaviour:
     itemIcon: {fileID: 1131204531, guid: 95ed2c725fbec92439db73cf9aefff5f, type: 3}
     itemOnWorldSprite: {fileID: 1131204531, guid: 95ed2c725fbec92439db73cf9aefff5f, type: 3}
     itemDescription: "\u571F\u5730\u4E2D\u957F\u51FA\u7684\u679C\u5B9E"
-    itemUseRadius: 0
+    itemUseRadius: 2
     canPickedup: 1
     canDropped: 0
     canCarried: 1
@@ -55,7 +55,7 @@ MonoBehaviour:
     itemIcon: {fileID: 784756541, guid: 47d222cf2f6b3bb46afd970fe7638645, type: 3}
     itemOnWorldSprite: {fileID: 784756541, guid: 47d222cf2f6b3bb46afd970fe7638645, type: 3}
     itemDescription: "\u7F8E\u5473\u7684\u8611\u83C7\uFF0C\u4E00\u5B9A\u8981\u716E\u719F\u4E86\u518D\u5403\u554A\uFF01"
-    itemUseRadius: 1
+    itemUseRadius: 2
     canPickedup: 1
     canDropped: 1
     canCarried: 1

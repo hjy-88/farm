@@ -8,8 +8,9 @@ namespace MFarm.Inventory
     public class ItemManager : MonoBehaviour
     {
         public Item itemPrefab;
+        public Item bounceItemPrefab;
         private Transform itemParent;
-
+        private Transform PlayerTransform => FindObjectOfType<Player>().transform;
         private Dictionary<string, List<SceneItem>> sceneItemDict = new Dictionary<string, List<SceneItem>>();
 
         private void OnEnable()
@@ -45,10 +46,12 @@ namespace MFarm.Inventory
             item.itemID = ID;
         }
 
-        private void OnDropItemEvent(int ID,Vector3 pos)
+        private void OnDropItemEvent(int ID,Vector3 mousePos)
         {
-            var item = Instantiate(itemPrefab, pos, Quaternion.identity, itemParent);
+            var item = Instantiate(bounceItemPrefab, PlayerTransform.position, Quaternion.identity, itemParent);
             item.itemID = ID;
+            var dir = (mousePos - PlayerTransform.position).normalized;
+            item.GetComponent<ItemBounce>().InitBounceItem(mousePos, dir);
         }
 
         private void GetAllSceneItems()
