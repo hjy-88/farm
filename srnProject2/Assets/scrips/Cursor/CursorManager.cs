@@ -115,8 +115,6 @@ public class CursorManager : MonoBehaviour
                 ItemType.HoeTool=>tool,
                 ItemType.ChopTool => tool,
                 ItemType.WaterTool => tool,
-                ItemType.BreakTool => tool,
-                ItemType.ReapTool => tool,
                 ItemType.CollectTool => tool,
                 ItemType.Commodity=>item,
                 _=>normal

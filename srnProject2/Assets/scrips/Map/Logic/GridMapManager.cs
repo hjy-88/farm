@@ -2,20 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Tilemaps;
 
 namespace MFarm.Map
 {
     public class GridMapManager : Singleton<GridMapManager>
-    {        
-        [Header("种地瓦片切换信息")]
-        public RuleTile digTile;
-        public RuleTile waterTile;
-        private Tilemap digTilemap;
-        private Tilemap waterTilemap;
-
+    {
         public List<MapData_SO> mapDataList;
-
         private Dictionary<string, TileDetails> tileDetailsDict = new Dictionary<string, TileDetails>();
         private Grid currentGrid;
         private void OnEnable()
@@ -85,10 +77,7 @@ namespace MFarm.Map
         private void OnAfterSceneLoadedEvent()
         {
             currentGrid = FindObjectOfType<Grid>();
-            digTilemap = GameObject.FindWithTag("Dig").GetComponent<Tilemap>();
-            waterTilemap = GameObject.FindWithTag("Water").GetComponent<Tilemap>();
         }
-
         private void OnExecuteActionAfterAnimation(Vector3 mouseWorldPos,ItemDetails itemDetails)
         {
             var mouseGridPos = currentGrid.WorldToCell(mouseWorldPos);
@@ -102,31 +91,8 @@ namespace MFarm.Map
                     case ItemType.Commodity:
                         EventHandler.CallDropItemEvent(itemDetails.itemID, mouseWorldPos);
                         break;
-                    case ItemType.HoeTool:
-                        SetDigGround(currentTile);
-                        currentTile.daySinceDug = 0;
-                        currentTile.canDig = false;
-                        currentTile.canDropItem = false;
-                        // 音效
-                        break;
                 }
             }
-        }
-
-
-        private void SetDigGround(TileDetails tile)
-        {
-            Vector3Int pos = new Vector3Int(tile.gridX, tile.gridY, 0);
-            if (digTilemap != null)
-                digTilemap.SetTile(pos, digTile);
-        }
-
-
-        private void SetWaterGround(TileDetails tile)
-        {
-            Vector3Int pos = new Vector3Int(tile.gridX, tile.gridY, 0);
-            if (waterTilemap != null)
-                waterTilemap.SetTile(pos, waterTile);
         }
     }
 }

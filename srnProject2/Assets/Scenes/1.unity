@@ -680,7 +680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1712309278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,7 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f9a322533a659e40a61311a344bfb96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSceneName: 01.field
+  startSceneName: Scene2
 --- !u!4 &1712309279
 Transform:
   m_ObjectHideFlags: 0
@@ -1016,8 +1016,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bd32627ec737664ba6c81f27970e195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  digTile: {fileID: 11400000, guid: 1f454beeae2fac344b0621ed6a57a647, type: 2}
-  waterTile: {fileID: 11400000, guid: 98cec488e9411394ebfcb269ea1789ff, type: 2}
   mapDataList:
   - {fileID: 11400000, guid: c87321afe9bbb6947963180efd186829, type: 2}
 --- !u!4 &1944185868

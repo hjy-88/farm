@@ -65,12 +65,12 @@ MonoBehaviour:
     itemName: "\u6C34\u58F6"
     itemType: 7
     itemIcon: {fileID: 725226521, guid: 52f30bcd923bee54baa44b9994e72a7a, type: 3}
-    itemOnWorldSprite: {fileID: 0}
+    itemOnWorldSprite: {fileID: 725226521, guid: 52f30bcd923bee54baa44b9994e72a7a, type: 3}
     itemDescription: "\u751F\u547D\u4E4B\u6E90\u7684\u5BB9\u5668\uFF0C\u6D47\u6C34\u8BA9\u4F5C\u7269\u957F\u9AD8\u9AD8\uFF0C\u7ED3\u51FA\u751C\u751C\u7684\u679C\u5B9E"
     itemUseRadius: 1
     canPickedup: 1
-    canDropped: 0
-    canCarried: 1
+    canDropped: 1
+    canCarried: 0
     itemPrice: 0
     sellPercentage: 0
   - itemID: 1006
