@@ -58,6 +58,12 @@ TagManager:
   - name: Buildings
     uniqueID: 3244219649
     locked: 0
+  - name: Front1
+    uniqueID: 1453739135
+    locked: 0
+  - name: Front2
+    uniqueID: 2010594511
+    locked: 0
   - name: Collision
     uniqueID: 2822102853
     locked: 0
