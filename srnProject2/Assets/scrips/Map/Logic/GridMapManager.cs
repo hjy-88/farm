@@ -82,13 +82,14 @@ namespace MFarm.Map
         {
             var mouseGridPos = currentGrid.WorldToCell(mouseWorldPos);
             var currentTile = GetTileDetailsOnMousePosition(mouseGridPos);
-
-            if(currentTile!=null)
+            //Debug.Log($"{currentTile}");
+            if (currentTile!=null)
             {
-                switch(itemDetails.itemType)
+                //Debug.Log($"11");
+                switch (itemDetails.itemType)
                 {
                     case ItemType.Commodity:
-                        EventHandler.CallInstantiateItemInScene(itemDetails.itemID, mouseWorldPos);
+                        EventHandler.CallDropItemEvent(itemDetails.itemID, mouseWorldPos);
                         break;
                 }
             }

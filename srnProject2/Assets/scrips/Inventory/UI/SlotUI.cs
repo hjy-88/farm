@@ -29,7 +29,7 @@ namespace Mfarm.Inventory
         private void Start()
         {
             isSelected = false;
-            if (itemDetails.itemID == 0)
+            if (itemDetails==null)
             {
                 UpdateEmptySlot();
             }
@@ -57,8 +57,9 @@ namespace Mfarm.Inventory
             if (isSelected)
             {
                 isSelected = false;
+                EventHandler.CallItemSelectedEvent(itemDetails,isSelected);
             }
-
+            itemDetails = null;
             slotImage.enabled = false;
             amountText.text = string.Empty;
             button.interactable = false;
@@ -117,16 +118,16 @@ namespace Mfarm.Inventory
                 }
             }
 
-            //else 
-            //{
-            //    if (itemDetails.canDropped)
-            //    {
-            //        //鼠标对应世界地图坐标
-            //        var pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
+            /*else 
+            {
+                if (itemDetails.canDropped)
+                {
+                    //鼠标对应世界地图坐标
+                    var pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
 
-            //        EventHandler.CallInstantiateItemInScene(itemDetails.itemID, pos);
-            //    }
-            //}
+                    EventHandler.CallInstantiateItemInScene(itemDetails.itemID, pos);
+                }
+            }*/
 
         }
     }

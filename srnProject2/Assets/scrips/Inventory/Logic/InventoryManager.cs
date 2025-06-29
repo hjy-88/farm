@@ -13,13 +13,23 @@ namespace MFarm.Inventory
         [Header("±³°üÊý¾Ý")]
         //public InventoryBag_SO playerBagTemp;
         public InventoryBag_SO playerBag;
-
+        private void OnEnable()
+        {
+            EventHandler.DropItemEvent += OnDropItemEvent;
+        }
+        private void OnDisable()
+        {
+            EventHandler.DropItemEvent -= OnDropItemEvent;
+        }
         private void Start()
         {
             EventHandler.CallUpdateInventoryUI(InventoryLocation.Player, playerBag.itemList);
         }
 
-
+        private void OnDropItemEvent(int ID, Vector3 pos)
+        {
+            RemoveItem(ID, 1);
+        }
 
         public ItemDetails GetItemDetails(int ID)
         {
@@ -118,6 +128,24 @@ namespace MFarm.Inventory
             {
                 playerBag.itemList[targetIndex] = currentItem;
                 playerBag.itemList[fromIndex] = new InventoryItem();
+            }
+
+            EventHandler.CallUpdateInventoryUI(InventoryLocation.Player, playerBag.itemList);
+        }
+
+        private void RemoveItem(int ID,int removeAmount)
+        {
+            var index = GetItemIndexInBag(ID);
+            if(playerBag.itemList[index].itemAmount>removeAmount)
+            {
+                var amount = playerBag.itemList[index].itemAmount - removeAmount;
+                var item = new InventoryItem { itemID = ID, itemAmount = amount };
+                playerBag.itemList[index] = item;
+            }
+            else if(playerBag.itemList[index].itemAmount == removeAmount)
+            {
+                var item = new InventoryItem();
+                playerBag.itemList[index] = item;
             }
 
             EventHandler.CallUpdateInventoryUI(InventoryLocation.Player, playerBag.itemList);

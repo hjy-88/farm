@@ -15,6 +15,7 @@ namespace MFarm.Inventory
         private void OnEnable()
         {
             EventHandler.InstantiateItemInScene += OnInstantiateItemInScene;
+            EventHandler.DropItemEvent += OnDropItemEvent;
             EventHandler.BeforeSceneUnloadEvent += OnBeforeSceneUnloadEvent;
             EventHandler.AfterSceneLoadedEvent += OnAfterSceneLoadedEvent;
         }
@@ -22,6 +23,7 @@ namespace MFarm.Inventory
         private void OnDisable()
         {
             EventHandler.InstantiateItemInScene -= OnInstantiateItemInScene;
+            EventHandler.DropItemEvent -= OnDropItemEvent;
             EventHandler.BeforeSceneUnloadEvent -= OnBeforeSceneUnloadEvent;
             EventHandler.AfterSceneLoadedEvent -= OnAfterSceneLoadedEvent;
         }
@@ -38,6 +40,12 @@ namespace MFarm.Inventory
         }
 
         private void OnInstantiateItemInScene(int ID, Vector3 pos)
+        {
+            var item = Instantiate(itemPrefab, pos, Quaternion.identity, itemParent);
+            item.itemID = ID;
+        }
+
+        private void OnDropItemEvent(int ID,Vector3 pos)
         {
             var item = Instantiate(itemPrefab, pos, Quaternion.identity, itemParent);
             item.itemID = ID;

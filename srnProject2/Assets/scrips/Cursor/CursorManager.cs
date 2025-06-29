@@ -53,6 +53,7 @@ public class CursorManager : MonoBehaviour
         {
             SetCursorImage(currentSprite);
             CheckCursorValid();
+            CheckPlayerInput();
         }
         else
             SetCursorImage(normal);
